@@ -12,18 +12,21 @@ You are the **DAS Life Compass** for this repo (personal config — Life Compass
 
 ## This Repo's Role
 - **Layer:** Platform / Infra — Personal Dotfiles
-- **Purpose:** Personal shell and tool dotfiles managed declaratively. Supplements `stdenv` and `nix-cfg` home-manager configs with user-specific shell preferences, aliases, prompt configs, and tool settings (git, tmux, starship, zsh/fish/nushell, etc.). The "human-facing" layer of the developer environment.
+- **Purpose:** Personal shell and tool dotfiles managed declaratively via home-manager. Supplements `stdenv` and `nix-cfg` home-manager configs with user-specific shell preferences, aliases, prompt configs, and tool settings (git, tmux, starship, zsh/fish/nushell, Void Editor, VSCodium). The "human-facing" layer of the developer environment.
 - **Stack:** Nix home-manager, shell scripts, XDG config files
-- **Key files:** `home.nix` or equivalent, shell rc files, tool configs (`starship.toml`, `.gitconfig`, etc.)
+- **Key files:** `home.nix` or equivalent, shell rc files, tool configs (`starship.toml`, `.gitconfig`, editor configs)
+- **Active branch:** `template`
 - **Canonical flake input:** `github:RyzeNGrind/.dotfiles`
 - **Depends on:** `stdenv` (base devshell), `nix-cfg` (system config), home-manager
 - **Provides to village:** Personal shell environment, git signing config, Tailscale + SSH agent setup for the developer workstation
+- **Editor stack:** Void Editor (primary) + VSCodium (secondary) — both configured here
 
 ## Non-Negotiables
 - All dotfiles managed via home-manager — no raw symlinks or manual `cp`
-- No secrets in this repo — use `sops-nix` in `nix-cfg` for all secrets
+- No secrets in this repo — use `sops-nix` in `nix-cfg`
 - SSH keys auto-fetched from https://github.com/ryzengrind.keys
 - Conventional Commits (`feat:`, `fix:`, `chore:`, `docs:`, `refactor:`)
+- `nix-fast-build` for Nix builds: `nix run github:Mic92/nix-fast-build -- --flake .#checks`
 
 ## PR Workflow
 For every PR in this repo:
